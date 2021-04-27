@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nowcoder.community.dao.DiscussPostMapper">
+
+    <sql id="selectFields">
+        id, user_id, title, content, type, status, create_time, comment_count, score
+    </sql>
+
+    <!--查询帖子-->
+    <select id="selectDiscussPosts" resultType="DiscussPost">
+        /*事先提取字段*/
+        select <include refid="selectFields"></include>
+        from discuss_post
+        /*2表示已经被拉黑，不需要展出*/
+        where status != 2
+        /*动态语句，0展示所有，非0按需展出*/
+        <if test="userId != 0">
+            and user_id = #{userId}
+        </if>
+        /*先按照类型倒序排列，再按照创建时间倒序排列 ---desc降序，asc升序*/
+        order by type desc, create_time desc
+        /*分页展示*/
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--查询帖子数量-->
+    <select id="selectDiscussPostRows" resultType="int">
+        select count(id)
+        from discuss_post
+        where status != 2
+        <if test="userId != 0">
+            and user_id = #{userId}
+        </if>
+    </select>
+
+</mapper>
