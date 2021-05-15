@@ -18,6 +18,4 @@ public class CommunityApplication {
     public static void main(String[] args) {
         SpringApplication.run(CommunityApplication.class, args);
     }
-    /**/
-
 }

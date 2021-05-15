@@ -8,9 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.Session;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -144,5 +146,23 @@ public class AlphaController {
     public String getCookie(@CookieValue("code") String code) {
         System.out.println(code);
         return "get cookie";
+    }
+
+    // session实例
+    @RequestMapping(path = "/session/set", method = RequestMethod.GET)
+    @ResponseBody
+    public String setSeesion(HttpSession session){
+        session.setAttribute("id", 1);
+        session.setAttribute("name", "Test");
+        return "set sesseion";
+    }
+
+    // session实例
+    @RequestMapping(path = "/session/get", method = RequestMethod.GET)
+    @ResponseBody
+    public String getSeesion(HttpSession session){
+        System.out.println(session.getAttribute("id"));
+        System.out.println(session.getAttribute("name"));
+        return "get sesseion";
     }
 }

@@ -76,15 +76,15 @@ class CommunityApplicationTests implements ApplicationContextAware {
     /**
      * 测试Bean的管理方式(实例化-前，初始化-中，销毁-后)
      */
-    @Test
-    public void testBeanManagement() {
-        AlphaService alphaService = applicationContext.getBean(AlphaService.class);
-        System.out.println(alphaService);
-
-        // 再次获取bean,结果相同，说明---单例模式，只被实例化一次
-        alphaService = applicationContext.getBean(AlphaService.class);
-        System.out.println(alphaService);
-    }
+//    @Test
+//    public void testBeanManagement() {
+//        AlphaService alphaService = applicationContext.getBean(AlphaService.class);
+//        System.out.println(alphaService);
+//
+//        // 再次获取bean,结果相同，说明---单例模式，只被实例化一次
+//        alphaService = applicationContext.getBean(AlphaService.class);
+//        System.out.println(alphaService);
+//    }
 
     /**
      * 修改源码中的配置--自定义Config类
