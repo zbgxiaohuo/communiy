@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 /*
 * 点赞功能
+*
 * */
 @Controller
 public class LikeController {
