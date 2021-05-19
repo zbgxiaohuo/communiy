@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+/*
+* 统一异常处理
+*/
 
 @ControllerAdvice(annotations = Controller.class)
 public class ExceptionAdvice {
@@ -27,7 +30,6 @@ public class ExceptionAdvice {
         // 判断是普通请求还是异步请求(固定格式)
         String xRequestedWith = request.getHeader("x-requested-With");
         if("XMLHttpRequest".equals(xRequestedWith)){
-            // application/plain：json格式的字符串
             response.setContentType("application/plain;charset=utf-8");
             PrintWriter writer = response.getWriter();
             writer.write(CommunityUtil.getJsonString(1, "服务器异常"));
@@ -35,6 +37,7 @@ public class ExceptionAdvice {
             // 普通请求
             response.sendRedirect(request.getContextPath() + "/error");
         }
+
     }
 
 }

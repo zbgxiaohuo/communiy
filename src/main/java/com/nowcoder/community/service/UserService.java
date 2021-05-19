@@ -6,7 +6,6 @@ import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.utils.CommunityConstant;
 import com.nowcoder.community.utils.CommunityUtil;
-import com.nowcoder.community.utils.MailClient;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +26,7 @@ public class UserService implements CommunityConstant {
 
     // 邮件客户端
     @Autowired
-    private MailClient mailClient;
+    private com.nowcoder.community.utils.MailClient mailClient;
 
     // 模板引擎
     @Autowired

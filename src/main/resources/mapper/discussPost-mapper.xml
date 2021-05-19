@@ -20,7 +20,7 @@
         /*2表示已经被拉黑，不需要展出*/
         where status != 2
         /*动态语句，0展示所有，非0按需展出*/
-        <if test="userId != 0">
+        <if test="userId!=0">
             and user_id = #{userId}
         </if>
         /*先按照类型倒序排列，再按照创建时间倒序排列 ---desc降序，asc升序*/
@@ -34,7 +34,7 @@
         select count(id)
         from discuss_post
         where status != 2
-        <if test="userId != 0">
+        <if test="userId!=0">
             and user_id = #{userId}
         </if>
     </select>

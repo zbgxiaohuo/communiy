@@ -1,7 +1,6 @@
 package com.nowcoder.communiy.communiy;
 
 import com.nowcoder.community.CommunityApplication;
-import com.nowcoder.community.utils.MailClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +16,7 @@ import org.thymeleaf.context.Context;
 public class MailTest {
 
     @Autowired
-    private MailClient mailClient;
+    private com.nowcoder.community.utils.MailClient mailClient;
 
     @Autowired
     private TemplateEngine templateEngine;

@@ -11,34 +11,29 @@ import org.springframework.stereotype.Component;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-/*
-* 邮件发送工具
-* */
 @Component
 public class MailClient {
 
     private static final Logger logger = LoggerFactory.getLogger(MailClient.class);
 
-    // 核心组件
     @Autowired
     private JavaMailSender mailSender;
 
     @Value("${spring.mail.username}")
     private String from;
 
-    public void sendMail(String to, String subject, String content){
-        try{
+    public void sendMail(String to, String subject, String content) {
+        try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
             helper.setFrom(from);
             helper.setTo(to);
-            // 主题
             helper.setSubject(subject);
-            // 表示可以接受html类型文件
             helper.setText(content, true);
             mailSender.send(helper.getMimeMessage());
-        }catch (MessagingException e){
-            logger.error("发送邮件失败" + e.getMessage());
+        } catch (MessagingException e) {
+            logger.error("发送邮件失败:" + e.getMessage());
         }
     }
+
 }
