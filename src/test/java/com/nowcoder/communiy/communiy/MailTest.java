@@ -10,6 +10,7 @@ import org.thymeleaf.context.Context;
 
 /*
  * 测试邮件发送
+ *
  * */
 @SpringBootTest
 @ContextConfiguration(classes = CommunityApplication.class)
